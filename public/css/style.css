@@ -1,0 +1,21 @@
+.message {
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    display: block;
+}
+
+.message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.message p {
+    margin: 0 !important;
+}
+
+.form_field_wrap {
+    margin-bottom: 15px;
+}
