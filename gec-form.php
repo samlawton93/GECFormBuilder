@@ -24,6 +24,9 @@ if ( ! class_exists( 'GECForms' ) ) {
 
         public function enqueue_scripts() {
             wp_enqueue_style( 'gecform', plugins_url( '/public/css/style.css', __FILE__ ), array(), 0.1 );
+            wp_deregister_script('jquery');
+            wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true);
+            wp_enqueue_script( 'gecformscript', plugins_url( '/public/js/script.js', __FILE__ ), array('jquery'), 0.1, true );
         }
 
         public function form( $atts ) {
@@ -40,53 +43,49 @@ if ( ! class_exists( 'GECForms' ) ) {
                 //Set form options
                 $form->set_att( 'action', esc_url( '/' ) );
                 $form->set_att( 'honeypot', true );
-                $form->set_att( 'class', array('enquiryForm') );
+                $form->set_att( 'class', array('GECenquiryForm') );
                 $form->set_att( 'id', 'enquiryForm' );
 
                 //Set form fields
                 $form->add_input( 'Name', array(
                     'type'     => 'text',
                     'class'    => 'form_field',
-                    'required' => true,
                 ), 'enquiry_name');
 
                 $form->add_input( 'Email', array(
                     'type'     => 'email',
                     'class'    => 'form_field',
-                    'required' => true,
+
                 ), 'enquiry_email');
 
-                $form->add_input( 'Property Type', array(
-                    'type'     => 'select',
-                    'class'    => 'form_field',
+                $form->add_input( 'Telephone', array(
+                    'type'       => 'tel',
+                    'class'      => 'form_field',
+                    'wrap_class' => 'form_field_wrap_multi'
+
+                ), 'enquiry_telephone');
+
+                $form->add_input( 'Postcode', array(
+                    'type'       => 'text',
+                    'class'      => 'form_field',
+                    'wrap_class' => 'form_field_wrap_multi'
+                ), 'enquiry_postcode');
+
+                $form->add_input( 'Service Required', array(
+                    'type'       => 'select',
+                    'class'      => 'form_field',
+                    'wrap_class' => 'form_field_wrap form_field_select',
                     'options'  => array(
-                        ''         => 'Please Select',
-                        'home'     => 'Home',
-                        'business' => 'Business',
+                        ''                        => 'Please Select',
+                        'Electricity Connections' => 'Electricity Connections',
+                        'Gas Connections'         => 'Gas Connections',
+                        'Water Connections'       => 'Water Connections',
+                        'Multi Connections'       => 'Multi Connections',
                     ),
-                    'required' => true,
-                ), 'enquiry_property');
-
-                $form->add_input( 'Website', array(
-                    'type'     => 'url',
-                    'class'    => 'form_field',
-                    'required' => false,
-                ), 'enquiry_website');
-
-                $form->add_input( 'Message', array(
-                    'type'     => 'textarea',
-                    'class'    => 'form_field',
-                    'required' => true,
-                ), 'enquiry_message');
+                ), 'enquiry_service');
 
                 // Shortcode should not output data directly
                 ob_start();
-
-                $status = filter_input( INPUT_GET, 'status', FILTER_VALIDATE_INT );
-
-                if ($status = 1) {
-                    printf( '<div class="message success"><p>%s</p></div>', __('Your message was submitted successfully.', 'gec-forms' ) );
-                }
 
                 //Build the form
                 $form->build_form();

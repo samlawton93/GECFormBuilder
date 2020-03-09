@@ -207,7 +207,7 @@ class PhpFormBuilder {
 		$output = '';
 
 		if ( $this->form['form_element'] ) {
-			$output .= '<form method="' . $this->form['method'] . '"';
+			$output .= '<div class="container"><form method="' . $this->form['method'] . '"';
 
 			if ( ! empty( $this->form['enctype'] ) ) {
 				$output .= ' enctype="' . $this->form['enctype'] . '"';
@@ -229,7 +229,7 @@ class PhpFormBuilder {
 				$output .= ' novalidate';
 			}
 
-			$output .= '>';
+			$output .= '><div class="form-container">';
 		}
 
 		// Add honeypot anti-spam field
@@ -320,7 +320,7 @@ class PhpFormBuilder {
 						}
 						$end .= '<option value="' . $key . '"' . $opt_insert . '>' . $opt . '</option>';
 					}
-					$end .= '</select>';
+					$end .= '</select><div class="select-arrow"></div>';
 					break;
 
 				case 'radio':
@@ -441,12 +441,17 @@ class PhpFormBuilder {
 
 		// Auto-add submit button
 		if ( ! $this->has_submit && $this->form['add_submit'] ) {
-			$output .= '<div class="form_field_wrap"><input type="submit" value="Submit" name="submit"></div>';
+			$output .= '<div class="form-field"><input type="submit" value="Submit" id="enquiry_submit"></div>';
 		}
 
 		// Close the form tag if one was added
 		if ( $this->form['form_element'] ) {
-			$output .= '</form>';
+			$output .= '<div class="gdpr-notice">
+              <label>
+                By submitting this request you agree to Crown Oil Ltd &amp; members of the Crown Group processing your personal data AND sending you marketing information by email. For more details see our <a href="http://crown-oil/privacy-policy/" target="_blank">Privacy Notice</a>. To unsubscribe to marketing tick here.
+                <input type="checkbox" name="quote-gdpr" id="quote-gdpr" value="1">
+              </label>
+            </div></div></form></div>';
 		}
 
 		// Output or return?
