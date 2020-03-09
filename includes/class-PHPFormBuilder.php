@@ -1,6 +1,6 @@
 <?php
 
-// https://github.com/joshcanhelp/php-form-builder/blob/master/PhpFormBuilder.php
+// Based on https://github.com/joshcanhelp/php-form-builder/blob/master/PhpFormBuilder.php
 // v 0.8.6
 
 class PhpFormBuilder {
