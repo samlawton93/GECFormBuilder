@@ -1,49 +1,49 @@
-.GECenquiryForm {
+.EnquiryForm {
     background-color: #2f64ad;
     padding: 20px;
     width: 340px;
     border-radius: 10px;
 }
 
-.GECenquiryForm .form-container {
+.EnquiryForm .form-container {
     display: flex;
     flex-direction: column;
 }
 
 @media (min-width: 768px) {
-    .GECenquiryForm .form-container {
+    .EnquiryForm .form-container {
         flex-direction: row;
     }
 }
 
 @media (min-width: 1100px) {
-    .GECenquiryForm .form-container {
+    .EnquiryForm .form-container {
         flex-direction: column;
     }
 }
 
-.GECenquiryForm .form-container .form_field_wrap,
-.GECenquiryForm .form-container .form_field_wrap_multi {
+.EnquiryForm .form-container .form_field_wrap,
+.EnquiryForm .form-container .form_field_wrap_multi {
     position: relative;
     margin-bottom: 13px;
 }
 
 @media (min-width: 1100px) {
-    .GECenquiryForm .form-container .form_field_wrap {
+    .EnquiryForm .form-container .form_field_wrap {
         width: 100%;
         margin-right: 0;
     }
 
-    .GECenquiryForm .form-container .form_field_wrap_multi {
+    .EnquiryForm .form-container .form_field_wrap_multi {
         display: flex;
         justify-content: space-between;
     }
 }
 
-.GECenquiryForm .form-container .form_field_wrap input,
-.GECenquiryForm .form-container .form_field_wrap select,
-.GECenquiryForm .form-container .form_field_wrap_multi input,
-.GECenquiryForm .form-container .form_field_wrap_multi select {
+.EnquiryForm .form-container .form_field_wrap input,
+.EnquiryForm .form-container .form_field_wrap select,
+.EnquiryForm .form-container .form_field_wrap_multi input,
+.EnquiryForm .form-container .form_field_wrap_multi select {
     border: 0;
     border-radius: 4px;
     background-color: #fff;
@@ -51,9 +51,17 @@
     font-size: 14px;
     max-height: 49px;
     padding: 23px 10px 8px 10px;
+    appearance: none;
 }
 
-.GECenquiryForm .form-container .form-field input[type="submit"] {
+.EnquiryForm .form-container .form_field_wrap input.has-errors,
+.EnquiryForm .form-container .form_field_wrap select.has-errors,
+.EnquiryForm .form-container .form_field_wrap_multi input.has-errors,
+.EnquiryForm .form-container .form_field_wrap_multi select.has-errors {
+    animation: shake .1s ease-in-out;
+}
+
+.EnquiryForm .form-container .form-field input[type="submit"] {
     border: 0;
     border-radius: 4px;
     background-color: #343434;
@@ -64,12 +72,12 @@
     margin-bottom: 13px;
 }
 
-.GECenquiryForm .form-container .form-field input[type="submit"]:not(:disabled):hover {
+.EnquiryForm .form-container .form-field input[type="submit"]:not(:disabled):hover {
     background-color: #131313;
 }
 
-.GECenquiryForm .form-container .form_field_wrap label,
-.GECenquiryForm .form-container .form_field_wrap_multi label {
+.EnquiryForm .form-container .form_field_wrap label,
+.EnquiryForm .form-container .form_field_wrap_multi label {
     position: absolute;
     top: 8px;
     left: 10px;
@@ -77,11 +85,11 @@
     pointer-events: none;
     font-size: 12px;
     font-weight: 600;
-    transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out 3;
     line-height: 1;
 }
 
-.GECenquiryForm .form-container .form_field_wrap .select-arrow {
+.EnquiryForm .form-container .form_field_wrap .select-arrow {
     position: absolute;
     top: 50%;
     right: 9px;
@@ -91,13 +99,22 @@
     pointer-events: none;
 }
 
-.GECenquiryForm .form-container .gdpr-notice {
+.EnquiryForm .form-container .gdpr-notice {
     color: #fff;
     font-size: 10px;
 }
 
+.EnquiryForm .form-container .gdpr-notice a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.EnquiryForm .form-container .gdpr-notice a:hover {
+    color: #ddd;
+}
+
 @media (min-width: 768px) {
-    .GECenquiryForm .form-container .gdpr-notice {
+    .EnquiryForm .form-container .gdpr-notice {
         width: 70%;
         margin: 5px auto 0;
         text-align: center;
@@ -105,8 +122,20 @@
 }
 
 @media (min-width: 1100px) {
-    .GECenquiryForm .form-container .gdpr-notice {
+    .EnquiryForm .form-container .gdpr-notice {
         width: 100%;
         margin: 0;
+    }
+}
+
+@keyframes shake {
+    from {
+        transform: translateX(-4px);
+        background-color: #ef9696
+    }
+
+    to {
+        transform: translateX(4px);
+        background-color: #ef9696
     }
 }

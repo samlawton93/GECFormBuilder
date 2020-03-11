@@ -35,6 +35,7 @@ if ( ! class_exists( 'GECForms' ) ) {
             $atts = shortcode_atts(
                 array(
                     'method' => 'post',
+                    'class'  => array('EnquiryForm'),
                 ), $atts, 'gecform');
 
                 // Instantiate the form class
@@ -43,7 +44,7 @@ if ( ! class_exists( 'GECForms' ) ) {
                 //Set form options
                 $form->set_att( 'action', esc_url( '/' ) );
                 $form->set_att( 'honeypot', true );
-                $form->set_att( 'class', array('GECenquiryForm') );
+                $form->set_att( 'class', $atts['class'] );
                 $form->set_att( 'id', 'enquiryForm' );
 
                 //Set form fields

@@ -1,4 +1,4 @@
-var $form = $('.GECenquiryForm')
+var $form = $('#enquiryForm')
 
 $form.on("submit", function(a) {
     a.preventDefault();
