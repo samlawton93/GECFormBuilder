@@ -37,7 +37,7 @@ if ( ! class_exists( 'GECForms' ) ) {
                     'method' => 'post',
                     'class'  => array(),
                 ), $atts, 'gecform');
-var_dump($atts);
+
                 // Instantiate the form class
                 $form = new PHPFormBuilder();
 
