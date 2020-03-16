@@ -448,7 +448,7 @@ class PhpFormBuilder {
 		if ( $this->form['form_element'] ) {
 			$output .= '<div class="gdpr-notice">
               <label>
-                By submitting this request you agree to Crown Oil Ltd &amp; members of the Crown Group processing your personal data AND sending you marketing information by email. For more details see our <a href="http://crown-oil/privacy-policy/" target="_blank">Privacy Notice</a>. To unsubscribe to marketing tick here.
+                By submitting this request you agree to GEC Ltd processing your personal data AND sending you marketing information by email. For more details see our <a href="/privacy-policy/" target="_blank">Privacy Notice</a>. To unsubscribe to marketing tick here.
                 <input type="checkbox" name="quote-gdpr" id="quote-gdpr" value="1">
               </label>
             </div></div></form></div>';
