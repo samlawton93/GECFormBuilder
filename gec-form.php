@@ -20,6 +20,7 @@ if ( ! class_exists( 'GECForms' ) ) {
         public function __construct() {
             add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
             add_shortcode( 'gecform', array( $this, 'form' ) );
+            add_shortcode( 'contactForm', array( $this, 'contactForm' ) );
         }
 
         public function enqueue_scripts() {
@@ -88,6 +89,62 @@ if ( ! class_exists( 'GECForms' ) ) {
                         'Multi Connections'       => 'Multi Connections',
                     ),
                 ), 'enquiry_service');
+
+                // Shortcode should not output data directly
+                ob_start();
+
+                //Build the form
+                $form->build_form();
+
+                //Return and clean buffer content
+                return ob_get_clean();
+        }
+
+        public function contactForm( $atts ) {
+            global $post;
+
+            $atts = shortcode_atts(
+                array(
+                    'method' => 'post',
+                ), $atts, 'contactForm');
+
+                // Instantiate the form class
+                $form = new PHPFormBuilder();
+
+                //Set form options
+                $form->set_att( 'action', esc_url( '/' ) );
+                $form->set_att( 'honeypot', true );
+                $form->set_att( 'class', 'contactForm' );
+                $form->set_att( 'id', 'enquiryForm' );
+
+                //Set form fields
+                $form->add_input( 'Name', array(
+                    'type'     => 'text',
+                    'class'    => 'form_field',
+                ), 'contact_name');
+
+                $form->add_input( 'Email', array(
+                    'type'     => 'email',
+                    'class'    => 'form_field',
+
+                ), 'contact_email');
+
+                $form->add_input( 'Telephone', array(
+                    'type'       => 'tel',
+                    'class'      => 'form_field',
+
+                ), 'contact_phone');
+
+                $form->add_input( 'Enquiry', array(
+                    'type'       => 'text',
+                    'class'      => 'form_field',
+                ), 'contact_enquiry');
+
+                $form->add_input( 'Your Message', array(
+                    'type'       => 'textarea',
+                    'class'      => 'form_field',
+                    'wrap_class' => 'form_field_wrap_textarea'
+                ), 'contact_message');
 
                 // Shortcode should not output data directly
                 ob_start();
