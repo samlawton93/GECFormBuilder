@@ -76,10 +76,8 @@
     -moz-appearance: none;
 }
 
-.EnquiryForm .form-container .form_field_wrap input.has-errors,
-.EnquiryForm .form-container .form_field_wrap select.has-errors,
-.EnquiryForm .form-container .form_field_wrap_multi input.has-errors,
-.EnquiryForm .form-container .form_field_wrap_multi select.has-errors {
+.EnquiryForm .form-container .form_field_wrap.has-errors,
+.EnquiryForm .form-container .form_field_wrap_multi.has-errors {
     animation: shake .1s ease-in-out;
 }
 
@@ -241,6 +239,10 @@
 
 .contactForm .form-container .form-field input[type="submit"]:not(:disabled):hover {
     background-color: #131313;
+}
+
+.contactForm .form-container .form_field_wrap.has-errors {
+    animation: shake .1s ease-in-out;
 }
 
 @keyframes shake {

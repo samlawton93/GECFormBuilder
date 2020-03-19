@@ -26,7 +26,7 @@ class PhpFormBuilder {
 		$defaults = array(
 			'action'       => $action,
 			'method'       => 'post',
-			'enctype'      => 'application/x-www-form-urlencoded',
+			'enctype'      => 'application/json',
 			'class'        => array(),
 			'id'           => '',
 			'markup'       => 'html',
