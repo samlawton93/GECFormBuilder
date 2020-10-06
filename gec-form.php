@@ -91,7 +91,7 @@ if ( ! class_exists( 'GECForms' ) ) {
                     ),
                 ), 'enquiry_service');
 
-                $form->add_input( 'Enquiry Type', array(
+                $form->add_input( 'Property Type', array(
                     'type'       => 'select',
                     'class'      => 'form_field',
                     'wrap_class' => 'form_field_wrap form_field_select',
