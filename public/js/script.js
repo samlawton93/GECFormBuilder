@@ -57,7 +57,8 @@ select("#enquiryForm") && select("#enquiryForm").addEventListener("submit", func
             "enquiry_email": select("#enquiry_email").value,
             "enquiry_telephone": select("#enquiry_telephone").value,
             "enquiry_postcode": select("#enquiry_postcode").value,
-            "enquiry_service": select("#enquiry_service").value
+            "enquiry_service": select("#enquiry_service").value,
+            "enquiry_type": select("#enquiry_type").value
         }
     }, function(a) {
         a.error ? (alert(a.error), b.removeAttribute("disabled")) : window.location = "/thank-you/"

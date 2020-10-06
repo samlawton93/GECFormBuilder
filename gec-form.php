@@ -91,6 +91,17 @@ if ( ! class_exists( 'GECForms' ) ) {
                     ),
                 ), 'enquiry_service');
 
+                $form->add_input( 'Enquiry Type', array(
+                    'type'       => 'select',
+                    'class'      => 'form_field',
+                    'wrap_class' => 'form_field_wrap form_field_select',
+                    'options'  => array(
+                        ''                        => 'Please Select',
+                        'Domestic/Home' => 'Domestic/Home',
+                        'Business'         => 'Business',
+                    ),
+                ), 'enquiry_type');
+
                 $form->add_input( false, array(
                     'type' => 'text',
     				'wrap_tag'         => 'div',
